@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Py Exprexiones Regulares Javascript Certus</title>
+</head>
+<body>
+    <h1>Ingreso al Sistema de Certus</h1>
+    <br>
+    Usuario: <input type="text" id="usuario">
+    <br>
+    Password:<input type="password" id="clave">
+    <br>
+    Nombres
+    <input type="text" id="nombre" onkeypress="return sololetras(event)" >
+    <br>
+    DNI
+    <input type="text" id="nombre" maxlength="8" onkeypress="return numeros(event)" >
+    <br>
+    <input type="button" id="ingresar" value="Ingresar" onclick="ingresar()" >
+   <!-- <button>Ingresar</button> -->
+
+    <script>
+        function ingresar(){
+
+            var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+
+           
+
+            var usuario=document.getElementById("usuario").value;
+
+            alert(usuario +"\n  __  recupero el usuario");
+            // Validar que se ingrese un correo
+            var correo=expresion.test(usuario)
+            // condicionales: 
+            if(correo==true){
+                alert('El correo es valido');
+               
+            }else{
+                alert('El correo No es valido \n Cualquier inconveniente puede comunicarse: dhuamanc@certus.edu.pe ');
+               // alt 9 + 2 = \
+            }
+
+        }
+
+        // validacion letras
+         function sololetras(e){
+                     if (event.keyCode >45 && event.keyCode  <58) event.returnValue = false;
+         } 
+
+        // Validacion de solo numeros para el DNI
+        function numeros(e){
+                     if (event.keyCode >32 && event.keyCode  <48) event.returnValue = false;
+                     if (event.keyCode >57 && event.keyCode  <255) event.returnValue = false;
+         } 
+
+    </script>
+
+</body>
+</html>
