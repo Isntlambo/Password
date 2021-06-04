@@ -4,59 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Py Exprexiones Regulares Javascript Certus</title>
+    <title>Mantenimiento de Alumnos Certus</title>
 </head>
 <body>
-    <h1>Ingreso al Sistema de Certus</h1>
+    <h1>Mantenimiento de Alumnos</h1>
     <br>
-    Usuario: <input type="text" id="usuario">
+    Codigo: <input type="text" id="codigo" maxlength="8" onkeypress="return numeros(event)">
     <br>
-    Password:<input type="password" id="clave">
+    Nombres: <input type="text" id="nombre" onkeypress="return sololetras(event)">
     <br>
-    Nombres
-    <input type="text" id="nombre" onkeypress="return sololetras(event)" >
+    Apellidos: <input type="text" id="apellido" onkeypress="return sololetras(event)">
     <br>
-    DNI
-    <input type="text" id="nombre" maxlength="8" onkeypress="return numeros(event)" >
+    Distrito: <input type="text" id="distrito" onkeypress="return sololetras(event)">
     <br>
-    <input type="button" id="ingresar" value="Ingresar" onclick="ingresar()" >
-   <!-- <button>Ingresar</button> -->
+    Direccion: <input type="text" id="direccion">
+    <br>
+    Correo: <input type="text" id="correo" onkeypress="return correo(event)">
+    <br>
+    <input type="button" value="Ingresar" id="ingresar" onclick="ingresar()">
 
     <script>
         function ingresar(){
 
             var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
 
-           
+            var codigo=document.getElementById('codigo').value;
+            var nombres=document.getElementById('nombre').value;
+            alert(codigo+ ' '+nombres);
+            console.log(codigo, ' ' + nombres);
 
-            var usuario=document.getElementById("usuario").value;
+            var arreglo =[1,2,3];
+            var texto=["pepito",'judas','juana'];
+            var arreglo2=['juanita',18,2500];
 
-            alert(usuario +"\n  __  recupero el usuario");
-            // Validar que se ingrese un correo
-            var correo=expresion.test(usuario)
-            // condicionales: 
-            if(correo==true){
-                alert('El correo es valido');
-               
-            }else{
-                alert('El correo No es valido \n Cualquier inconveniente puede comunicarse: dhuamanc@certus.edu.pe ');
-               // alt 9 + 2 = \
-            }
-
+            var resultado=arreglo[1] + ' ' + arreglo[2].toString();
+            
+            alert(resultado);
+            console.log(arreglo[1], arreglo[2]);
+            console.log(texto[0],texto[1]);
+            console.log(arreglo2[0], arreglo2[2]);
         }
 
-        // validacion letras
-         function sololetras(e){
+        function correo(){
+
+            var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+            var correo=document.getElementById("correo").value;
+        }
+
+        function sololetras(e){
                      if (event.keyCode >45 && event.keyCode  <58) event.returnValue = false;
          } 
 
-        // Validacion de solo numeros para el DNI
         function numeros(e){
                      if (event.keyCode >32 && event.keyCode  <48) event.returnValue = false;
                      if (event.keyCode >57 && event.keyCode  <255) event.returnValue = false;
          } 
 
-    </script>
 
+    </script>
 </body>
 </html>
